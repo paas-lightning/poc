@@ -1,0 +1,10 @@
+kind: Endpoints
+apiVersion: v1
+metadata:
+  name: webserver-nginx-svc-endpoint
+  namespace: bdf-credor-poc
+subsets:
+  - addresses:
+      - ip: 192.120.2.30
+    ports:
+      - port: 9376

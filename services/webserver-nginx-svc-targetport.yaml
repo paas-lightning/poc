@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: webserver-nginx-svc-targetport
+  namespace: bdf-credor-poc
+spec:
+  selector:
+    app: webserver-nginx
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 9376

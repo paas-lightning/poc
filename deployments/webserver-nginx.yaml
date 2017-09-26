@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: webserver-nginx
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: webserver-nginx
+    spec:
+      containers:
+      - name: webserver-nginx
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
