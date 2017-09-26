@@ -15,9 +15,18 @@ kubectl get pods --namespace=$NAMESPACE
 kubectl create -f services/$APP-svc.yaml --namespace=$NAMESPACE
 # tests
 kubectl get services --namespace=$NAMESPACE
-kubectl describe svc $APP --namespace=$NAMESPACE
+
 
 kubectl get pods -l app=$APP --namespace=$NAMESPACE 
+
+
+## Added the howto to reach from outside the application
+kubectl describe svc $APP --namespace=$NAMESPACE
+# get the node port
+kubectl cluster-info 
+# get the cluster IP
+curl $CLUSTER_IP:$NODEPORT
+# verify nginx is connected from outside 
 
 
 # kubectl run --image=nginx nginx-app --port=80 --env="DOMAIN=cluster"
