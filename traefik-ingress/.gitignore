@@ -1,4 +1,5 @@
 traefik
 ca.crt
 token
-**/.swp
+**/*.swp
+
