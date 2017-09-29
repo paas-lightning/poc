@@ -2,9 +2,9 @@
   "kind": "Namespace",
   "apiVersion": "v1",
   "metadata": {
-    "name": "bdf-credor-poc",
+    "name": "poc-1",
     "labels": {
-      "name": "bdf-credor-poc"
+      "name": "poc-1"
     }
   }
 }

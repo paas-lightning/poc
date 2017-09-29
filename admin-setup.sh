@@ -1,6 +1,6 @@
 kubectl get nodes
-NAMESPACE=bdf-credor-poc
-QUOTAS=bdf-poc
+NAMESPACE=poc-01
+QUOTAS=poc-01
 # Create the Namespace:
 kubectl create -f admin/namespaces/$NAMESPACE.json
 # Create the ResourceQuota:

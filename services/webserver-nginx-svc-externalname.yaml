@@ -2,7 +2,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: webserver-nginx-svc-externalname
-  namespace: bdf-credor-poc
+  namespace: poc-01
 spec:
   type: ExternalName
   externalName: my.test.example.com

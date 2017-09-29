@@ -2,7 +2,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: webserver-nginx-svc-targetport
-  namespace: bdf-credor-poc
+  namespace: poc-01
 spec:
   selector:
     app: webserver-nginx

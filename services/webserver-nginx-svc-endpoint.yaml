@@ -2,7 +2,7 @@ kind: Endpoints
 apiVersion: v1
 metadata:
   name: webserver-nginx-svc-endpoint
-  namespace: bdf-credor-poc
+  namespace: poc-01
 subsets:
   - addresses:
       - ip: 192.120.2.30

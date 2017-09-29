@@ -1,6 +1,6 @@
 
-NAMESPACE=bdf-credor-poc
-QUOTAS=bdf-poc
+NAMESPACE=poc-01
+QUOTAS=poc-01
 APP=webserver-nginx
 
 ## app deploy
