@@ -1,0 +1,9 @@
+[web]
+address = ":8080"
+ReadOnly = true
+
+[kubernetes]
+# Kubernetes server endpoint
+endpoint = "API_PROTOCOL://API_HOST:API_PORT"
+namespaces = ["default","kube-system","poc"]
+

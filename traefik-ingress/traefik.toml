@@ -1,0 +1,9 @@
+[web]
+address = ":8080"
+ReadOnly = true
+
+[kubernetes]
+# Kubernetes server endpoint
+endpoint = "https://192.168.0.3:6443"
+namespaces = ["default","kube-system","poc"]
+
