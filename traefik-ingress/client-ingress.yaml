@@ -4,7 +4,7 @@ metadata:
   name: webserver-nginx-ingress
 spec:
   rules:
-  - host: webserver-nginx.k8s.eclair.msepehr.com
+  - host: webserver-nginx.k8s.msepehr.com
     http:
       paths:
       - path: /

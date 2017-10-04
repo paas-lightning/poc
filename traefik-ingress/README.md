@@ -19,3 +19,9 @@
 ./ktraefik-DELETE.sh
 ```
 
+# Tester les objets Kubernetes
+
+```
+./ktraefik-DELETE.sh
+```
+

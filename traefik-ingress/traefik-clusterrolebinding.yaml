@@ -5,8 +5,8 @@ metadata:
 roleRef:  
  apiGroup: rbac.authorization.k8s.io
  kind: ClusterRole
- name: traefik-ingress-controller-rb
+ name: traefik-ingress-controller
 subjects:  
 - kind: ServiceAccount
   name: poc-saccount 
-  namespace: poc 
+  namespace: poc
