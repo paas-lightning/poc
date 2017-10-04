@@ -1,5 +1,7 @@
 # Installation Traefik
+```
 ./tinstall.sh
+```
 
 # Creation des objets Kubernetes 
 

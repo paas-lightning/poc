@@ -12,5 +12,10 @@ spec:
       containers:
       - name: webserver-nginx
         image: nginx:alpine
+        env:
+        - name: HTTP_PROXY
+          value: "http://10.118.36.49:3128"
+        - name: HTTPS_PROXY
+          value: "http://10.118.36.49:3128"
         ports:
         - containerPort: 80

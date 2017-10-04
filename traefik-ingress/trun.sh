@@ -1,6 +1,8 @@
 #!/bin/bash 
 echo 'Starting Traefik...'
 
+set -x
+
 #lb_ip="`hostname -i`"
 
 export API_PROTOCOL="`kubectl get endpoints kubernetes -o json | jq '.subsets[].ports[].name'`"

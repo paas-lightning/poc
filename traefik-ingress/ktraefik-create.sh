@@ -1,5 +1,16 @@
 NAMESPACE="poc"
-ACCOUNT="traefik-ingress-controller"
+ACCOUNT="poc-saccount"
+SA_PATH="/var/run/secrets/kubernetes.io/serviceaccount/"
+#set -x
+
+
+NS=$(kubectl get namespaces -ojson | grep  "$NAMESPACE" )
+while [ -n "$NS" ]; do
+  echo "Namespace $NAMESPACE still exists, remove it to continue"
+  sleep 5
+  NS=$(kubectl get namespaces -ojson | grep  "$NAMESPACE" )
+done
+
 
 kubectl create -f traefik-namespace.json
 kubectl create -f traefik-clusterrolebinding.yaml --namespace $NAMESPACE
@@ -14,20 +25,20 @@ echo "Account found : $SECRET_NAME"
 
 kubectl get secret $(echo $SECRET_NAME  | tr -d '"')  --namespace=$NAMESPACE
 
-ca_crt=$(kubectl get secret $(echo $SECRET_NAME  | tr -d '"') --namespace=$NAMESPACE -o json | jq '.data."ca.crt"')
+ca_crt=$(kubectl get secret $(echo $SECRET_NAME  | tr -d '"') --namespace=$NAMESPACE -o json | sed "s/ca\.crt/ca_crt/g"	 | jq '.data.ca_crt')
 echo $ca_crt | tr -d '"' | tr -d "\n" |  base64 -d > ca.crt
 
-sudo mkdir -p /var/run/secrets/kubernetes.io/serviceaccount/
+sudo mkdir -p $SA_PATH
 
-sudo rm /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
-sudo cp ca.crt /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+sudo rm "${SA_PATH}ca.crt"
+sudo cp ca.crt $SA_PATH
 
 token=$(kubectl get secret $(echo $SECRET_NAME  | tr -d '"') --namespace=$NAMESPACE -o json | jq '.data.token' | tr -d '"' | base64 -d)
 
 echo $token | tr -d '"' | tr -d "\n"  > token
-sudo rm /var/run/secrets/kubernetes.io/serviceaccount/token
-sudo cp token /var/run/secrets/kubernetes.io/serviceaccount/token
+sudo rm "${SA_PATH}token"
+sudo cp token $SA_PATH
 
 
-
+./kclient-create.sh
 
