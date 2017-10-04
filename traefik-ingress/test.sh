@@ -17,3 +17,9 @@ kubectl get service -n $NAMESPACE
 kubectl get service -n poc-client
 
 curl -k --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt -H "Authorization: Bearer $(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" "$API_PROTOCOL://$API_HOST:$API_PORT/apis/extensions/v1beta1/namespaces/$NAMESPACE/ingresses"
+
+node_port=$(kubectl get service webserver-nginx-svc-nodeport  -n poc-client -ojson | jq '.spec.ports[].nodePort')
+
+echo "curl http://KUBE_NODE????:$node_port"
+
+

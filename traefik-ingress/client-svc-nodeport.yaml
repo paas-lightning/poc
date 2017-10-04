@@ -1,0 +1,16 @@
+piVersion: v1
+kind: Service
+metadata:
+  name: webserver-nginx-svc-nodeport
+name: webserver-nginx-svc-nodeport
+labels:
+  app: traefik-lb-svc
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    name: http
+  selector:
+    app: webserver-nginx
+    namespace: poc-client
+
