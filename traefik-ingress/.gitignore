@@ -2,4 +2,4 @@ traefik
 ca.crt
 token
 **/*.swp
-
+ca.pem
