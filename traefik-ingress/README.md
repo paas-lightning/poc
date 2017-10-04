@@ -7,7 +7,6 @@
 
 ```
 ./ktraefik-create.sh
-./kclient-create.sh
 ```
 # Lancement de Traefik
 
@@ -18,6 +17,5 @@
 
 ```
 ./ktraefik-DELETE.sh
-./kclient-DELETE.sh
 ```
 
