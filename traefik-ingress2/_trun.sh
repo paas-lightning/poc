@@ -6,7 +6,7 @@ kubectl apply -f https://raw.githubusercontent.com/containous/traefik/master/exa
 #kubectl create -f traefik-rbac.yaml
 
 kubectl apply -f https://raw.githubusercontent.com/containous/traefik/master/examples/k8s/traefik-deployment.yaml
-#wget https://github.com/containous/traefik/tree/master/examples/k8s/traefik-deployment.yaml
+#wget https://raw.githubusercontent.com/containous/traefik/master/examples/k8s/traefik-deployment.yaml
 #kubectl create -f traefik-deployment.yaml
 
 #wget https://raw.githubusercontent.com/containous/traefik/master/examples/k8s/traefik-ds.yaml
