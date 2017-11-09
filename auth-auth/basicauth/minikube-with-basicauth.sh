@@ -7,7 +7,10 @@
 minikube start --extra-config apiserver.Authentication.PasswordFile.BasicAuthFile=/etc/kubernetes/passwd --extra-config=apiserver.Authorization.Mode=RBAC --extra-config=apiserver.Admission.PluginNames=NamespaceLifecycle,LimitRanger,ServiceAccount,PersistentVolumeLabel,DefaultStorageClass,PodSecurityPolicy,ResourceQuota,DefaultTolerationSeconds
 
 cat <<EOF | minikube ssh sudo tee /etc/kubernetes/passwd
-password,alice,1000,basic-user
-password,bob,2000,privileged-user
+password,useradmin,12,system:authenticated
+password,usersys,13,"system:masters,system:serviceaccounts"
+password,user1,10,basic-user
+password,user2,11,group2
 EOF
+
 
