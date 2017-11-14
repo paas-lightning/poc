@@ -21,9 +21,10 @@ config()
   password=$2
   output_dir=$3
   config="$output_dir/config.$user"
-  cp config.template $config
 
-   
+  [ -e $config ] && rm $config
+  cp config.template $config
+     
   API_PROTOCOL=$(kubectl get endpoints kubernetes -o json | jq '.subsets[].ports[].name')
   #API_HOST=$(minikube ip)
   API_HOST=$(kubectl get endpoints kubernetes -o json | jq '.subsets[].addresses[].ip')
@@ -34,7 +35,7 @@ config()
   sed -i  "s/<PASSWORD>/$(eval echo $password)/g" $config
   sed -i  "s/<USER>/$(eval echo $user)/g" $config
   echo "The config file $config has been added"
-  cat $config
+  #cat $config
   return 1
 }
 
