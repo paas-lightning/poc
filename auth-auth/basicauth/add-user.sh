@@ -1,12 +1,18 @@
 #!/bin/bash
 # Add user to k8s 1.7 using service account, no RBAC (unsafe)
 
-if [[ -z "$1" ]] ;then
-  echo "usage: $0 <username>"
+if [ "$#" -ne 2 ];
+then
+  echo "usage: $0 <username> <output_directory>"
+  echo 'Example: ./$0 username configs'
   exit 1
 fi
 
-user=$1
+user_up=$1
+echo "creating config for user $user_up"
+user=$(echo "$user_up" | awk '{print tolower($0)}')
+echo "creating config for user $user"
+output_dir=$2
 kubectl create sa ${user}
 secret=$(kubectl get sa ${user} -o json | jq -r .secrets[].name)
 echo "secret = ${secret}"
@@ -53,3 +59,5 @@ KUBECONFIG=k8s-${user}-conf kubectl config use-context ${user}-${cluster_name#cl
 
 echo "done! Test with: "
 echo "KUBECONFIG=k8s-${user}-conf kubectl get no"
+
+mv k8s-${user}-conf $output_dir
