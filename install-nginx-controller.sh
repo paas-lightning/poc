@@ -69,7 +69,7 @@ ERROR: (gcloud.docker) You do not currently have an active account selected.
 ### gcloud asks an auth login : gcloud auth login
 Result:
 ```You are now logged in as [mahyar.sepehr@gmail.com].
-Your current project is [bdf-eclair].  You can change this setting by running:
+Your current project is [toto].  You can change this setting by running:
   $ gcloud config set project PROJECT_ID
 ```
 
